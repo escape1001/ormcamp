@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오름캠프 0201</title>
+    <style>
+        /* 초기화, 폰트추가 */
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        button{
+            border: none;
+            cursor: pointer;
+            background: none;
+        }
+
+        a, a:visited{
+            color:initial;
+            text-decoration: none;
+        }
+
+        form, fieldset{
+            border:none;
+        }
+
+        @font-face {
+            font-family: 'GmarketSans';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'GmarketSans';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Noto Sans KR';
+            font-style: normal;
+            font-weight: 400;
+            src: url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2") format('woff2'),
+            url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format('woff'),
+            url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format('opentype');
+        }
+
+        @font-face {
+            font-family: 'OTEnjoystoriesBA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, button, a{
+            font-family: 'GmarketSans';
+        }
+
+        /* 스타일링 공통*/
+        .center-content{
+            width: 90%;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .hide{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip-path: circle(0);
+        }
+
+        /* 스타일링 개별*/
+        body{
+            background-color: #5B2386;
+            color:#fff;
+            text-align: center;
+        }
+
+        main{
+            padding-top: 120px;
+        }
+
+        .main-visual{
+            padding-bottom: 102px;
+        }
+
+        .main-visual .img-area{
+            width: 100%;
+            padding:0 20%;
+            position: relative;
+        }
+
+        .main-visual .img-area img.clock{
+            width: 60%;
+        }
+
+        .main-visual .img-area img.txt{
+            width: 100;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main-visual .txt-area{
+            padding-top: 46px;
+        }
+
+        .main-visual .txt-area .txt-top{
+            padding-bottom: 78px;
+            font-family: 'OTEnjoystoriesBA';
+            color:#F5DF4D;
+            font-size: 36px;
+        }
+
+        .main-visual .txt-area .txt-bottom{
+            display: inline-block;
+            font-size: 18px;
+            line-height: 1.75;
+            position: relative;
+        }
+
+        .main-visual .txt-area .txt-bottom::before,
+        .main-visual .txt-area .txt-bottom::after{
+            content:'';
+            display: block;
+            width: 46px;
+            height: 46px;
+            background: url("https://cdn.builder.io/api/v1/image/assets%2Fcd602da2e9434a0dabae755c0f9a97b4%2Fbdb86f721c9141bc91dbd60524123f6b") center center no-repeat;
+            position: absolute;
+            top:10%;
+            left:-50px;
+        }
+
+        .main-visual .txt-area .txt-bottom::after{
+            left:unset;
+            right: -50px;
+            transform: rotate(180deg);
+        }
+
+        .main-visual .txt-area .txt-bottom b{
+            font-size: 24px;
+        }
+
+        .set-goal{
+            padding-bottom: 147px;
+        }
+        
+        .set-goal, .calc-goal {
+            font-size: 24px;
+        }
+
+        .set-goal .txt-area,
+        .calc-goal .txt-area{
+            padding-bottom: 115px;
+            display: flex;
+            flex-direction: column;
+            gap:17px;
+        }
+
+        .set-goal .btn-area,
+        .calc-goal .btn-area{
+            margin: 0 12%;
+            display: flex;
+            gap:18px;
+        }
+
+        .set-goal .txt-area p,
+        .calc-goal .txt-area p{
+            display: flex;
+            gap:17px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .set-goal .txt-area input{
+            width: 228px;
+            padding:0 10px;
+            height: 57px;
+            border-radius: 7px;
+            border:none;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .set-goal .txt-area input::placeholder{
+            color: #BABCBE;
+        }
+
+        .set-goal .btn-area{
+            position: relative;
+        }
+
+        .set-goal .btn-area .icon-click{
+            width: 64px;
+            position: absolute;
+            right:0;
+            bottom:0;
+            transform: translate(105%, 20%);
+        }
+        
+        .default-btn{
+            flex-grow: 1;
+            padding:20px 50px;
+            font-size: 24px;
+            font-weight: 800;
+            background-color: #FCEE21;
+            color:#5B2386;
+            border-radius: 50px;
+            box-shadow: 0px 0px 10px 0px #00000080;
+        }
+
+        .sub-btn{
+            background-color: #fff;
+        }
+
+        .calc-goal b{
+            font-size: 73px;
+            font-weight: 800;
+        }        
+
+        footer{
+            padding: 130px 0 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:20px;
+            font-size: 12px;
+            font-family: 'Noto Sans KR';
+        }
+
+        footer img{
+            width: 125px;
+        }
+        
+    </style>
+</head>
+<body>
+    <main class="center-content">
+        <section class="main-visual">
+            <h2 class="hide">1만시간의 법칙</h2>
+            <div class="container">
+                <div class="img-area">
+                    <img
+                        class="clock"
+                        src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2F5ace0f7713f54eb281ee8349e8ae3ac1"
+                        alt=""
+                    />
+                    <img
+                        class="txt"
+                        src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fedd7fa6beaa745f9b074599a94445b2f"
+                        alt="1만 시간의 법칙"
+                    />
+                </div>
+                <div class="txt-area">
+                    <p class="txt-top">“연습은 어제의 당신보다 당신을 더 낫게 만든다.”</p>
+                    <p class="txt-bottom">
+                        <b>1만 시간의 법칙</b>은<br/>
+                        어떤 분야의 전문가가 되기 위해서는<br/>
+                        최소한 1만 시간의 훈련이 필요하다는 법칙이다.
+                    </p>
+                </div>
+            </div>
+        </section> 
+        <section class="set-goal">
+            <h3 class="hide">목표 입력</h3>
+            <div class="container">
+                <form action="#">
+                    <fieldset>
+                        <legend class="hide">목표 입력</legend>
+                        <div class="txt-area">
+                            <p>나는<input placeholder="예)프로그래밍"/>전문가가 될 것이다.</p>
+                            <p>그래서 앞으로 매일 하루에<input type="number" placeholder="예)5시간"/>시간씩 훈련할 것이다.</p>
+                        </div>
+                        <div class="btn-area">
+                            <button class="default-btn">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
+                            <img
+                                class="icon-click"
+                                src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fa545f082e3644e48833625947960c241"
+                                alt=""
+                            />
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section> 
+        <section class="calc-goal">
+            <h3 class="hide">목표 계산</h3>
+            <div class="container">
+                <div class="txt-area">
+                    <p>당신은<b>프로그래밍</b>전문가가 되기 위해서</p>
+                    <p>대략<b>5110</b>일 이상 훈련하셔야 합니다! :)</p>
+                </div>
+                <div class="btn-area">
+                    <a class="default-btn" href="#">훈련하러 가기 GO!GO!</a>
+                    <button class="default-btn sub-btn">공유하기</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="center-content">
+        <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2F5c3d1f2f1fe44ebcb438e787ccbe2062"
+            alt="위니브 로고"
+        />
+        <small>
+            ※ 본 서비스 내 이미지 및 콘텐츠의 저작권은 주식회사 WeNiv에 있습니다.<br/>
+            수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
+        </small>
+    </footer>
+</body>
+</html>
