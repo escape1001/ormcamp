@@ -72,8 +72,24 @@
             position: absolute;
             width: 1px;
             height: 1px;
+            left:-9999px;
             overflow: hidden;
             clip-path: circle(0);
+        }
+
+        .default-btn{
+            flex-grow: 1;
+            padding:20px 50px;
+            font-size: 24px;
+            font-weight: 800;
+            background-color: #FCEE21;
+            color:#5B2386;
+            border-radius: 50px;
+            box-shadow: 0px 0px 10px 0px #00000080;
+        }
+
+        .sub-btn{
+            background-color: #fff;
         }
 
         /* 스타일링 개별*/
@@ -102,7 +118,7 @@
         }
 
         .main-visual .img-area img.txt{
-            width: 100;
+            width: 100%;
             position: absolute;
             left:50%;
             top:50%;
@@ -163,13 +179,7 @@
             display: flex;
             flex-direction: column;
             gap:17px;
-        }
-
-        .set-goal .btn-area,
-        .calc-goal .btn-area{
-            margin: 0 12%;
-            display: flex;
-            gap:18px;
+            word-break: keep-all;
         }
 
         .set-goal .txt-area p,
@@ -180,10 +190,18 @@
             align-items: center;
         }
 
+        .set-goal .btn-area,
+        .calc-goal .btn-area{
+            margin: 0 12%;
+            display: flex;
+            gap:18px;
+            position: relative;
+        }
+
         .set-goal .txt-area input{
             width: 228px;
-            padding:0 10px;
             height: 57px;
+            padding:0 10px;
             border-radius: 7px;
             border:none;
             text-align: center;
@@ -194,10 +212,6 @@
             color: #BABCBE;
         }
 
-        .set-goal .btn-area{
-            position: relative;
-        }
-
         .set-goal .btn-area .icon-click{
             width: 64px;
             position: absolute;
@@ -206,21 +220,6 @@
             transform: translate(105%, 20%);
         }
         
-        .default-btn{
-            flex-grow: 1;
-            padding:20px 50px;
-            font-size: 24px;
-            font-weight: 800;
-            background-color: #FCEE21;
-            color:#5B2386;
-            border-radius: 50px;
-            box-shadow: 0px 0px 10px 0px #00000080;
-        }
-
-        .sub-btn{
-            background-color: #fff;
-        }
-
         .calc-goal b{
             font-size: 73px;
             font-weight: 800;
@@ -253,18 +252,18 @@
                         class="clock"
                         src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2F5ace0f7713f54eb281ee8349e8ae3ac1"
                         alt=""
-                    />
+                    >
                     <img
                         class="txt"
                         src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fedd7fa6beaa745f9b074599a94445b2f"
                         alt="1만 시간의 법칙"
-                    />
+                    >
                 </div>
                 <div class="txt-area">
                     <p class="txt-top">“연습은 어제의 당신보다 당신을 더 낫게 만든다.”</p>
                     <p class="txt-bottom">
-                        <b>1만 시간의 법칙</b>은<br/>
-                        어떤 분야의 전문가가 되기 위해서는<br/>
+                        <b>1만 시간의 법칙</b>은<br>
+                        어떤 분야의 전문가가 되기 위해서는<br>
                         최소한 1만 시간의 훈련이 필요하다는 법칙이다.
                     </p>
                 </div>
@@ -277,8 +276,8 @@
                     <fieldset>
                         <legend class="hide">목표 입력</legend>
                         <div class="txt-area">
-                            <p>나는<input placeholder="예)프로그래밍"/>전문가가 될 것이다.</p>
-                            <p>그래서 앞으로 매일 하루에<input type="number" placeholder="예)5시간"/>시간씩 훈련할 것이다.</p>
+                            <p>나는<input placeholder="예&#41;프로그래밍">전문가가 될 것이다.</p>
+                            <p>그래서 앞으로 매일 하루에<input type="number" placeholder="예&#41;5시간">시간씩 훈련할 것이다.</p>
                         </div>
                         <div class="btn-area">
                             <button class="default-btn">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
@@ -286,7 +285,7 @@
                                 class="icon-click"
                                 src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fa545f082e3644e48833625947960c241"
                                 alt=""
-                            />
+                            >
                         </div>
                     </fieldset>
                 </form>
@@ -297,7 +296,7 @@
             <div class="container">
                 <div class="txt-area">
                     <p>당신은<b>프로그래밍</b>전문가가 되기 위해서</p>
-                    <p>대략<b>5110</b>일 이상 훈련하셔야 합니다! :)</p>
+                    <p>대략<b>5110</b>일 이상 훈련하셔야 합니다! :&#41;</p>
                 </div>
                 <div class="btn-area">
                     <a class="default-btn" href="#">훈련하러 가기 GO!GO!</a>
@@ -310,9 +309,9 @@
         <img
             src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2F5c3d1f2f1fe44ebcb438e787ccbe2062"
             alt="위니브 로고"
-        />
+        >
         <small>
-            ※ 본 서비스 내 이미지 및 콘텐츠의 저작권은 주식회사 WeNiv에 있습니다.<br/>
+            ※ 본 서비스 내 이미지 및 콘텐츠의 저작권은 주식회사 WeNiv에 있습니다.<br>
             수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
         </small>
     </footer>
