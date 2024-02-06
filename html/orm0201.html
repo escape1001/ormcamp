@@ -338,26 +338,29 @@
     </style>
     <script>
         const calc1milion = (e) => {
-            // 입력한 시간 받아오기
             e.preventDefault();
             
+            // submit 버튼 클릭 막고 입력한 시간 받아오기
             const input_title = document.querySelector("form input[title=goal_title]").value;
             const input_time = parseInt(document.querySelector("form input[title=goal_time]").value);
+            const submit_btn = document.querySelector("form button");
+
+            submit_btn.disabled = true;
             
             // 1만시간 계산
             const calced_time = Math.round(10000 / input_time); // '대략 n일 이상' 이니까 반올림
             
             // 결과 출력 - 3초 인위적 로딩
-            const calc_section = document.querySelectorAll(".calc-goal");
+            // 이미 출력된 결과 있을 경우 해당 영역 remove
+            const calc_section = document.querySelector(".calc-goal");
 
-            if (calc_section){
-                calc_section.forEach(el=>el.remove());
+            if(calc_section){
+                calc_section.remove();
             }
 
             const target_container = document.querySelector("main");
             const sectionElement = document.createElement('section');
             sectionElement.className = 'calc-goal';
-
 
             sectionElement.innerHTML = `
                 <h3 class="hide">목표 계산</h3>
@@ -389,6 +392,7 @@
                 `;
 
                 target_container.appendChild(sectionElement);
+                submit_btn.disabled = false;
             }, 3000);
         };
 
