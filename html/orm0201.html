@@ -88,6 +88,10 @@
             box-shadow: 0px 0px 10px 0px #00000080;
         }
 
+        .default-btn:hover{
+            animation: btnBlink 1s ease-in-out infinite alternate;
+        }
+        
         .sub-btn{
             background-color: #fff;
         }
@@ -218,12 +222,79 @@
             right:0;
             bottom:0;
             transform: translate(105%, 20%);
+            transition: transform .5s ease-in-out;
+        }
+        
+        .set-goal .btn-area:hover .icon-click{
+            transform: translate(50%, 20%);
+        }
+
+        .calc-goal .loader{
+            position: relative;
+            height: 200px;
+        }
+        
+        .calc-goal .loader img{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 1/1;
+            animation: loadingSpin 1.2s linear infinite;
         }
         
         .calc-goal b{
             font-size: 73px;
             font-weight: 800;
-        }        
+        }
+
+        .modal-layer{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0, 0.5);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            display: none;
+            z-index: 1;
+        }
+
+        .modal-layer.show{
+            display: flex;
+        }
+
+        .modal-layer .modal-box{
+            background-color: #fff;
+            color:#5B2386;
+            border-radius: 10px;
+            padding:20px 30px;
+        }
+        
+        .modal-layer .modal-box .txt-top{
+            font-size: 30px;
+            font-family: 'OTEnjoystoriesBA';
+        }
+        
+        .modal-layer .modal-box .txt-top b{
+            font-size: 80px;
+        }
+        
+        .modal-layer .modal-box img{
+            width: 430px;
+        }
+
+        .modal-layer .modal-box .txt-bottom{
+            padding-top: 20px;
+        }
+
+        .modal-layer .modal-box .txt-bottom p{
+            padding-top: 20px;
+            font-size: 13px;
+            color: #747474;
+        }
 
         footer{
             padding: 130px 0 70px;
@@ -239,8 +310,106 @@
         footer img{
             width: 125px;
         }
-        
+
+        @keyframes loadingSpin {
+            0%{
+                width: 30%;
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50%{
+                width: 25%;
+            }
+            100%{
+                width: 30%;
+                transform: translate(-50%, -50%) rotate(360deg) ;
+            }
+        }
+
+        @keyframes btnBlink {
+            from{
+                filter: brightness(1);
+                box-shadow: 0px 0px 0px #FCEE21;
+            }
+            to{
+                filter: brightness(1.5);
+                box-shadow: 0px 0px 15px #FCEE21;
+            }
+        }        
     </style>
+    <script>
+        const calc1milion = (e) => {
+            // 입력한 시간 받아오기
+            e.preventDefault();
+            
+            const input_title = document.querySelector("form input[title=goal_title]").value;
+            const input_time = parseInt(document.querySelector("form input[title=goal_time]").value);
+            
+            // 1만시간 계산
+            const calced_time = Math.round(10000 / input_time); // '대략 n일 이상' 이니까 반올림
+            
+            // 결과 출력 - 3초 인위적 로딩
+            const calc_section = document.querySelectorAll(".calc-goal");
+
+            if (calc_section){
+                calc_section.forEach(el=>el.remove());
+            }
+
+            const target_container = document.querySelector("main");
+            const sectionElement = document.createElement('section');
+            sectionElement.className = 'calc-goal';
+
+
+            sectionElement.innerHTML = `
+                <h3 class="hide">목표 계산</h3>
+                <p class="loader">
+                    <img
+                        class="clock"
+                        src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2F5ace0f7713f54eb281ee8349e8ae3ac1"
+                        alt="loading"
+                    >
+                </p>
+            `;
+
+            target_container.appendChild(sectionElement);
+
+            
+            setTimeout(()=>{
+                sectionElement.innerHTML = `
+                    <h3 class="hide">목표 계산</h3>
+                    <div class="container">
+                        <div class="txt-area">
+                            <p>당신은<b>${input_title}</b>전문가가 되기 위해서</p>
+                            <p>대략<b>${calced_time}</b>일 이상 훈련하셔야 합니다! :&#41;</p>
+                        </div>
+                        <div class="btn-area">
+                            <button class="default-btn" onclick="toggleModal();">훈련하러 가기 GO!GO!</button>
+                            <button class="default-btn sub-btn" onclick="copyThisUrl();">공유하기</button>
+                        </div>
+                    </div>
+                `;
+
+                target_container.appendChild(sectionElement);
+            }, 3000);
+        };
+
+        const toggleModal = () => {
+            const modalElement = document.querySelector(".modal-layer");
+            modalElement.classList.toggle("show")
+        };
+
+        const copyThisUrl = () => {
+            const this_url = location.href;
+            let tmp = document.createElement('input');
+
+            document.body.appendChild(tmp);
+            tmp.value = this_url;
+            tmp.select();
+            document.execCommand("copy");
+            document.body.removeChild(tmp);
+            
+            alert("URL이 복사되었습니다"); 
+        };
+    </script>
 </head>
 <body>
     <main class="center-content">
@@ -272,38 +441,38 @@
         <section class="set-goal">
             <h3 class="hide">목표 입력</h3>
             <div class="container">
-                <form action="#">
-                    <fieldset>
-                        <legend class="hide">목표 입력</legend>
-                        <div class="txt-area">
-                            <p>나는<input placeholder="예&#41;프로그래밍">전문가가 될 것이다.</p>
-                            <p>그래서 앞으로 매일 하루에<input type="number" placeholder="예&#41;5시간">시간씩 훈련할 것이다.</p>
-                        </div>
-                        <div class="btn-area">
-                            <button class="default-btn">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
-                            <img
-                                class="icon-click"
-                                src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fa545f082e3644e48833625947960c241"
-                                alt=""
-                            >
-                        </div>
-                    </fieldset>
+                <form onsubmit="calc1milion(event);" autocomplete="off">
+                    <div class="txt-area">
+                        <p>나는<input title="goal_title" placeholder="예&#41;프로그래밍" required>전문가가 될 것이다.</p>
+                        <p>그래서 앞으로 매일 하루에<input title="goal_time" type="number" placeholder="예&#41;5시간" max="24" required>시간씩 훈련할 것이다.</p>
+                    </div>
+                    <div class="btn-area">
+                        <button class="default-btn">나는 며칠 동안 훈련을 해야 1만 시간이 될까?</button>
+                        <img
+                            class="icon-click"
+                            src="https://cdn.builder.io/api/v1/image/assets%2F253795ae855443f2bcf20ffa08f40a29%2Fa545f082e3644e48833625947960c241"
+                            alt=""
+                        >
+                    </div>
                 </form>
             </div>
-        </section> 
-        <section class="calc-goal">
-            <h3 class="hide">목표 계산</h3>
-            <div class="container">
-                <div class="txt-area">
-                    <p>당신은<b>프로그래밍</b>전문가가 되기 위해서</p>
-                    <p>대략<b>5110</b>일 이상 훈련하셔야 합니다! :&#41;</p>
-                </div>
-                <div class="btn-area">
-                    <a class="default-btn" href="#">훈련하러 가기 GO!GO!</a>
-                    <button class="default-btn sub-btn">공유하기</button>
+        </section>
+        <div class="modal-layer">
+            <div class="modal-box">
+                <p class="txt-top">
+                    <b>화이팅!!♥♥♥</b><br/>
+                    당신의 꿈을 응원합니다!
+                </p>
+                <img
+                    src="https://paullab.co.kr/images/10000hours/licat.png"
+                    alt="응원하는 라이캣"
+                >
+                <div class="txt-bottom">
+                    <button class="default-btn" onclick="toggleModal();">종료하고 진짜 훈련하러 가기 GO!GO!</button>
+                    <p>(그냥 닫기 버튼입니다.)</p>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
     <footer class="center-content">
         <img
