@@ -18,22 +18,111 @@
             margin: 0 auto;
         }
 
+        html{
+            font-size: 10px;
+            height: 100%;
+        }
+
         body{
+            font-size: 1.6rem;
             background-color: var(--color-grey);
+            height: 100%;
         }
 
         *{
             margin: 0;
             padding: 0;
+            list-style: none;
+            box-sizing: border-box;
         }
 
-        html, body{
-            height: 100%;
+        .ir-hidden{
+            position: absolute;
+            left: -9999px;
+            clip-path: circle(0px);
+            overflow: hidden;
         }
 
         main{
             height: 100%;
             background-color: var(--color-point);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header{
+            padding: 1rem 0;
+            background-color: var(--color-white);
+            text-align: center;
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: .5rem .5rem 1rem rgba(0,0,0, 0.2);
+        }
+
+        section{
+            height: calc(100% - 5.9rem); /* TO DO : 수정 필요*/
+        }
+
+        .chat-container{
+            padding:2rem;
+            display: flex;
+            height: calc(100% - 5rem);
+            gap:2rem;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        .chat-bubble{
+            display: flex;
+            gap:1rem;
+        }
+
+        .chat-bubble .profile-area img{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 40%;
+        }
+
+        .chat-bubble .message-area{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap:1rem;
+        }
+
+        .chat-bubble .message-area img{
+            width: 20rem;
+            aspect-ratio: 1/1;
+            background-color: #ccc;
+            border-radius: 1rem;
+        }
+
+        .chat-bubble .message-area .message-txt{
+            background-color: var(--color-white);
+            padding:1.5rem;
+            border-radius: 0rem 1rem 1rem 1rem;
+        }
+
+        .chat-bubble.user{
+            align-self: flex-end;
+        }
+
+        .chat-bubble.user .message-txt{
+            border-radius: 1rem 1rem 0rem 1rem;
+        }
+
+        .input-area{
+            height: 5rem;
+            background-color: var(--color-white);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            gap:1rem;
+        }
+
+        .input-area input{
+            flex-grow: 1;
         }
     </style>
     <script>
@@ -104,18 +193,72 @@
             <h1>사주고냥</h1>
         </header>
         <section>
-            <h2>intro</h2>
-            <div>
-                사주고냥과의 대화를 시작하시겠습니까?
-            </div>
-        </section>
-        <section>
-            <h2>채팅영역</h2>
-            <ul>
-                <li>나는 고양 : 냥냥</li>
-                <li>user : 사용자 메세지</li>
+            <h2 class="ir-hidden">채팅영역</h2>
+            <ul class="chat-container">
+                <li class="chat-bubble bot">
+                    <div class="profile-area">
+                        <img src="/project_01/media/test.png">
+                    </div>
+                    <div class="message-area">
+                        <p>사주고냥</p>
+                        <img src="/project_01/media/test.png">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li>
+
+                <li class="chat-bubble loader">
+                    <div class="profile-area">
+                        <img src="/project_01/media/test.png">
+                    </div>
+                    <div class="message-area">
+                        <p>사주고냥</p>
+                        <p class="message-txt">...</p>
+                    </div>
+                </li>
+
+                <li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li>
+
+                <li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li>
+
+                <li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li><li class="chat-bubble user">
+                    <div class="message-area">
+                        <p class="message-txt">텍스트 어쩌구</p>
+                    </div>
+                </li>
             </ul>
-            <form>
+            <form class="input-area">
                 <input placeholder="생년월일을 입력해주세요"/>
                 <button>보내기</button>
             </form>
