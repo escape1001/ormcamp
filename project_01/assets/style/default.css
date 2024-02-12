@@ -1,0 +1,180 @@
+:root{
+    --color-white:#fff;
+    --color-black:#111;
+    --color-grey:#ccc;
+    --color-point:#effacc;
+    --font-size-big:1.8rem;
+    --font-size-default:1.6rem;
+    --font-size-small:1.4rem;
+}
+
+.center-content{
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+html{
+    font-size: 10px;
+    height: 100%;
+}
+
+body{
+    font-size: var(--font-size-default);
+    background-color: var(--color-grey);
+    height: 100%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.ir-hidden{
+    position: absolute;
+    left: -9999px;
+    clip-path: circle(0px);
+    overflow: hidden;
+}
+
+main{
+    height: 100%;
+    background-color: var(--color-point);
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    padding: 1rem 0;
+    background-color: var(--color-white);
+    text-align: center;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: .5rem .5rem 1rem rgba(0,0,0, 0.2);
+}
+
+section{
+    height: calc(100% - 5.9rem); /* TO DO : 수정 필요*/
+}
+
+.chat-container{
+    padding:2rem;
+    display: flex;
+    height: calc(100% - 5rem);
+    gap:2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.chat-bubble{
+    width: 90%;
+    display: flex;
+    gap:1rem;
+    animation: messageIn .5s ease-in-out both;
+}
+
+.chat-bubble .profile-area{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 40%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chat-bubble .profile-area img{
+    width: 90%;
+}
+
+.chat-bubble .message-area{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap:1rem;
+}
+
+.chat-bubble .message-area .profile-txt{
+    padding-top: .5rem;
+    font-size: var(--font-size-small);
+}
+
+.chat-bubble .message-area img{
+    width: 20rem;
+    object-fit: contain;
+    border-radius: 1rem;
+    background-color: var(--color-white);
+}
+
+.chat-bubble .message-area .message-txt{
+    background-color: var(--color-white);
+    padding:1.5rem;
+    border-radius: 0rem 1rem 1rem 1rem;
+}
+
+.chat-bubble.user{
+    align-self: flex-end;
+}
+
+.chat-bubble.user .message-txt{
+    border-radius: 1rem 1rem 0rem 1rem;
+}
+
+.chat-bubble.loader .message-txt {
+    display: flex;
+    gap:.5rem;
+}
+
+.chat-bubble.loader .message-txt span{
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    background-color: var(--color-grey);
+    border-radius: 50%;
+    animation: fadeIn .8s ease-in-out alternate infinite;
+}
+
+.chat-bubble.loader .message-txt span:nth-child(2){
+    animation-delay: .2s;
+}
+
+.chat-bubble.loader .message-txt span:nth-child(3){
+    animation-delay: .4s;
+}
+
+.input-area{
+    height: 5rem;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    gap:1rem;
+}
+
+.input-area input{
+    flex-grow: 1;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes messageIn {
+    from{
+        transform: translateY(20%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
