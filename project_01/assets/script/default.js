@@ -29,7 +29,9 @@ const addChat = (emotion, message) => {
 
     targetElement.appendChild(newElement);
 
-    targetElement.scrollTo(0, 99999);
+    setTimeout(() => {
+        targetElement.scrollTo({top:99999, left:0, behavior:"smooth"});
+    }, 100);
 };
 
 const addLoader = () => {

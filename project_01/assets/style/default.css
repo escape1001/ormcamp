@@ -73,7 +73,6 @@ section{
     width: 90%;
     display: flex;
     gap:1rem;
-    animation: messageIn .5s ease-in-out both;
 }
 
 .chat-bubble .profile-area{
@@ -122,6 +121,10 @@ section{
 
 .chat-bubble.user .message-txt{
     border-radius: 1rem 1rem 0rem 1rem;
+}
+
+.chat-bubble.loader {
+    animation: messageIn .5s ease-in-out both;
 }
 
 .chat-bubble.loader .message-txt {
