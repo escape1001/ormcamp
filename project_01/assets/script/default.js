@@ -19,7 +19,7 @@ const addChat = (emotion, message, isUser) => {
             <p class="profile-txt">사주고냥</p>
             ${
                 emotion ?
-                `<img src="./assets/media/${emotion}.gif">` : ""
+                `<img onerror="removeThis(event);" src="./assets/media/${emotion}.gif">` : ""
             }
             <p class="message-txt">${message}</p>
         </div>
@@ -30,6 +30,10 @@ const addChat = (emotion, message, isUser) => {
     setTimeout(() => {
         targetElement.scrollTo({top:99999, left:0, behavior:"smooth"});
     }, 100);
+};
+
+const removeThis = (event)=>{
+    event.target.remove();
 };
 
 const addLoader = (keepLoad) => {
