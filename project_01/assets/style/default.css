@@ -2,8 +2,10 @@
     --color-white:#fff;
     --color-black:#111;
     --color-grey:#ccc;
-    --color-point:#effacc;
-    --color-point-yellow:#fffc3c;
+    --color-point-light:#effacc;
+    --color-point-dark:#C1D18C;
+    --color-point-yellow:#ffe967;
+    --font-size-huge:2rem;
     --font-size-big:1.8rem;
     --font-size-default:1.6rem;
     --font-size-small:1.4rem;
@@ -42,7 +44,7 @@ body{
 
 main{
     height: 100%;
-    background-color: var(--color-point);
+    background-color: var(--color-point-light);
     display: flex;
     flex-direction: column;
 }
