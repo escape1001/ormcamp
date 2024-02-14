@@ -17,25 +17,9 @@ main.intro{
     animation: bgMove 10s linear infinite;
 }
 
-@keyframes bgMove {
-    0%{
-        left: -50%;
-        top: -50%;
-        opacity: 0;
-    }
-    20%, 80%{
-        opacity: 0.2;
-    }
-    100%{
-        left:0;
-        top:0;
-        opacity: 0;
-    }
-}
-
-.intro section{
-    display: flex;
+.intro-area{
     width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -46,15 +30,16 @@ main.intro{
     z-index: 1;
 }
 
-.intro section img{
+.intro-area img{
+    width: 21rem;
     animation: fadeInUp .8s ease-in-out;
 }
 
-.intro section p{
+.intro-area p{
     animation: fadeInUp .8s .4s ease-in-out both;
 }
 
-.intro section a{
+.intro-area a{
     font-size: var(--font-size-big);
     height: 5.6rem;
     display: flex;
@@ -70,7 +55,23 @@ main.intro{
     animation: fadeInUp .8s .8s ease-in-out both;
 }
 
-.intro section a:hover{
+.intro-area a:hover{
     background-color: var(--color-point-dark);
     color: var(--color-white);
+}
+
+@keyframes bgMove {
+    0%{
+        left: -50%;
+        top: -50%;
+        opacity: 0;
+    }
+    20%, 80%{
+        opacity: 0.2;
+    }
+    100%{
+        left:0;
+        top:0;
+        opacity: 0;
+    }
 }
