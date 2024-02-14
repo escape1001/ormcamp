@@ -80,6 +80,7 @@ html{
     height: 100%;
     font-size: 10px;
     font-family: sans-serif;
+    word-break: keep-all;
 }
 
 body{
