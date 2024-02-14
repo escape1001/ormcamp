@@ -77,14 +77,15 @@ a{
 }
 
 html{
-    font-size: 10px;
     height: 100%;
+    font-size: 10px;
+    font-family: sans-serif;
 }
 
 body{
+    height: 100%;
     font-size: var(--font-size-default);
     background-color: var(--color-grey);
-    height: 100%;
 }
 
 *{
