@@ -1,4 +1,4 @@
-main.intro{
+main.welcome{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@ main.intro{
     animation: bgMove 10s linear infinite;
 }
 
-.intro-area{
+.welcome-area{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -30,16 +30,16 @@ main.intro{
     z-index: 1;
 }
 
-.intro-area img{
+.welcome-area img{
     width: 21rem;
     animation: fadeInUp .8s ease-in-out;
 }
 
-.intro-area p{
+.welcome-area p{
     animation: fadeInUp .8s .4s ease-in-out both;
 }
 
-.intro-area a{
+.welcome-area a{
     font-size: var(--font-size-big);
     height: 5.6rem;
     display: flex;
@@ -55,7 +55,7 @@ main.intro{
     animation: fadeInUp .8s .8s ease-in-out both;
 }
 
-.intro-area a:hover{
+.welcome-area a:hover{
     background-color: var(--color-point-dark);
     color: var(--color-white);
 }
