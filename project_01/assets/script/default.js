@@ -156,8 +156,10 @@ const toggleInputArea = () => {
 
     if (is_disabled){
         input_element.blur();
+        input_element.placeholder="잠시만 기다려주세요.";
     } else{
         input_element.focus();
+        input_element.placeholder="생년월일을 입력해주세요.";
     }
 };
 

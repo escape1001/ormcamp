@@ -261,7 +261,7 @@ main{
     pointer-events: none;
 }
 
-.input-area.disabled *{
+.input-area.disabled fieldset{
     opacity: 0.5;
 }
 
