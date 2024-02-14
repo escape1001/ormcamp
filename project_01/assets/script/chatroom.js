@@ -78,7 +78,7 @@ const addLoader = (keep_load) => {
     `;
 
     target_element.appendChild(new_element);
-    target_element.scrollTo(0, 99999);
+    target_element.scrollTo({top:99999, left:0, behavior:"smooth"});
 
     !keep_load && removeLoader(1000);
 };
