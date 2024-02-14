@@ -26,7 +26,7 @@ const addChat = (emotion, message, is_user) => {
             <p class="profile-txt">사주고냥</p>
             ${
                 emotion ?
-                `<img onerror="removeThis(event);" src="../assets/media/emo_${emotion}.gif">` : ""
+                `<img onload="showImg(event);" src="../assets/media/emo_${emotion}.gif">` : ""
             }
             <p class="message-txt">${message}</p>
         </div>
@@ -40,11 +40,15 @@ const addChat = (emotion, message, is_user) => {
 };
 
 /**
- * [이벤트가 일어난 객체를 삭제]
+ * [이미지 정상 로드 완료 후 출력]
  * @param {event} event 
  */
-const removeThis = (event)=>{
-    event.target.remove();
+const showImg = (event)=>{
+    event.target.classList.add("load-success");
+    
+    setTimeout(() => {
+        target_element.scrollTo({top:99999, left:0, behavior:"smooth"});
+    }, 100);
 };
 
 /**

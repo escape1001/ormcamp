@@ -73,7 +73,16 @@
     font-size: var(--font-size-small);
 }
 
-.chat-bubble .message-area img{
+.chat-bubble .message-area img:not(.load-success){
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    left:0;
+    bottom:0;
+    padding:0;
+}
+
+.chat-bubble .message-area img.load-success{
     width: 20rem;
     padding:1rem;
     object-fit: contain;
