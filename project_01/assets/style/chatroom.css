@@ -152,6 +152,7 @@
 }
 
 .input-area input{
+    font-size: var(--font-size-default);
     flex-grow: 1;
     border: none;
 }
