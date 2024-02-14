@@ -20,13 +20,13 @@ const addChat = (emotion, message, is_user) => {
         </div>
     `: `
         <div class="profile-area">
-            <img src="./assets/media/bot_profile.png">
+            <img src="/project_01/assets/media/bot_profile.png">
         </div>
         <div class="message-area">
             <p class="profile-txt">사주고냥</p>
             ${
                 emotion ?
-                `<img onerror="removeThis(event);" src="./assets/media/${emotion}.gif">` : ""
+                `<img onerror="removeThis(event);" src="/project_01/assets/media/${emotion}.gif">` : ""
             }
             <p class="message-txt">${message}</p>
         </div>
@@ -60,7 +60,7 @@ const addLoader = (keep_load) => {
     new_element.innerHTML = `
         <li class="chat-bubble loader">
             <div class="profile-area">
-                <img src="./assets/media/bot_profile.png">
+                <img src="/project_01/assets/media/bot_profile.png">
             </div>
             <div class="message-area">
                 <p class="profile-txt">사주고냥</p>

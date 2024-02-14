@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사주고냥</title>
-    <link href="./assets/style/default.css" rel="stylesheet" />
+    <link href="../assets/style/default.css" rel="stylesheet" />
 </head>
 <body onload="introTalk();">
-    <main class="center-content">
+    <main class="chatroom center-content">
         <header>
-            <a href="./">메인 빠꾸</a>
             <h1>사주고냥</h1>
+            <a href="/project_01">
+                <img src="/project_01/assets/media/icon_arrow_left.svg" alt="메인 페이지로 돌아가기">
+            </a>
         </header>
         <section>
             <h2 class="ir-hidden">채팅영역</h2>
@@ -34,11 +36,16 @@
                 </li> -->
             </ul>
             <form class="input-area disabled" onsubmit="sendMessage(event);">
-                <input placeholder="생년월일을 입력해주세요"/>
-                <button>보내기</button>
+                <fieldset>
+                    <legend class="ir-hidden">채팅 입력영역</legend>
+                    <input placeholder="생년월일을 입력해주세요"/>
+                    <button>
+                        <img src="/project_01/assets/media/icon_send.svg" alt="메세지 전송">
+                    </button>
+                </fieldset>
             </form>
         </section>
     </main>    
-    <script type="text/javascript" src="./assets/script/default.js"></script>
+    <script type="text/javascript" src="../assets/script/default.js"></script>
 </body>
 </html>
