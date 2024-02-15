@@ -26,11 +26,18 @@ const addChat = (emotion, message, is_user) => {
             <p class="profile-txt">사주고냥</p>
             ${
                 emotion ?
-                `<img onload="showImg(event);" src="../assets/media/emo_${emotion}.gif">` : ""
+                `<img class="emotion" src="../assets/media/emo_${emotion}.gif">` : ""
             }
             <p class="message-txt">${message}</p>
         </div>
     `;
+
+    // 이모티콘 있는 경우 onLoad 이벤트 추가
+    const imgElement = new_element.querySelector('img.emotion');
+
+    if(imgElement){
+        imgElement.addEventListener('load', showImg);
+    }
 
     target_element.appendChild(new_element);
 
@@ -270,4 +277,7 @@ const sendMessage = (event) => {
 
         sendChatRequest(data);        
     }
-};};
+};
+
+// 순차실행 영역
+introTalk();
