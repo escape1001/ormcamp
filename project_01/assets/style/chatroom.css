@@ -73,7 +73,7 @@
     font-size: var(--font-size-small);
 }
 
-.chat-bubble .message-area img:not(.load-success){
+.chat-bubble .message-area .emotion:not(.load-success){
     width: 1px;
     height: 1px;
     position: absolute;
@@ -82,7 +82,7 @@
     padding:0;
 }
 
-.chat-bubble .message-area img.load-success{
+.chat-bubble .message-area .emotion.load-success{
     width: 20rem;
     padding:1rem;
     object-fit: contain;
@@ -134,11 +134,11 @@
 
 .input-area{
     height: 8.3rem;
-    background-color: var(--color-white);
+    padding: 0 2rem;
     display: flex;
     align-items: center;
-    padding: 0 2rem;
     gap:1rem;
+    background-color: var(--color-white);
 }
 
 .input-area fieldset{
@@ -152,8 +152,8 @@
 }
 
 .input-area input{
-    font-size: var(--font-size-default);
     flex-grow: 1;
+    font-size: var(--font-size-default);
     border: none;
 }
 

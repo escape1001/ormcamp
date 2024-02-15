@@ -228,7 +228,7 @@ const sendChatRequest = async(data) => {
     } catch(error){
         console.error(error);
         removeLoader();
-        addChat("no", "알아들을 수 없다냥, 다시 입력해달라냥!")
+        addChat("no", "문제가 발생했다냥, 잠시 후 다시 입력해달라냥!")
         toggleInputArea();
     }
 };
