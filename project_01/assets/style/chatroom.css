@@ -32,7 +32,6 @@
     height: calc(100% - 8.3rem);
     padding:2rem;
     display: flex;
-    gap:2rem;
     flex-direction: column;
     align-items: flex-start;
     overflow: hidden;
@@ -43,6 +42,7 @@
     width: 90%;
     display: flex;
     gap:1rem;
+    padding-bottom: 2rem;
 }
 
 .chat-bubble .profile-area{

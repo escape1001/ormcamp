@@ -42,7 +42,7 @@ const addChat = (emotion, message, is_user) => {
     target_element.appendChild(new_element);
 
     setTimeout(() => {
-        target_element.scrollTo({top:99999, left:0, behavior:"smooth"});
+        target_element.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, 100);
 };
 
@@ -54,7 +54,7 @@ const showImg = (event)=>{
     event.target.classList.add("load-success");
     
     setTimeout(() => {
-        target_element.scrollTo({top:99999, left:0, behavior:"smooth"});
+        target_element.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, 100);
 };
 
@@ -85,7 +85,7 @@ const addLoader = (keep_load) => {
     `;
 
     target_element.appendChild(new_element);
-    target_element.scrollTo({top:99999, left:0, behavior:"smooth"});
+    target_element.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
     !keep_load && removeLoader(1000);
 };
