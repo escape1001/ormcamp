@@ -41,7 +41,7 @@ const addChat = (emotion, message, is_user) => {
 
 /**
  * [이미지 정상 로드 완료 후 출력]
- * @param {event} event 
+ * @param {Event} event 
  */
 const showImg = (event)=>{
     event.target.classList.add("load-success");
@@ -167,9 +167,13 @@ const toggleInputArea = () => {
     }
 };
 
+
 /**
- * [메세지 api 요청]
- * @param {*} data 
+ * [API 요청]
+ * @param {Array<{
+ *   role: string,
+ *   content: string
+ * }>} data - API에 전송할 프롬포트 message
  */
 const sendChatRequest = async(data) => {
     console.log("api 요청");
@@ -224,7 +228,7 @@ const sendChatRequest = async(data) => {
 
 /**
  * [사용자 채팅 form 제출]
- * @param {event} event 
+ * @param {Event} event 
  */
 const sendMessage = (event) => {
     event.preventDefault();
@@ -266,4 +270,4 @@ const sendMessage = (event) => {
 
         sendChatRequest(data);        
     }
-};
+};};
