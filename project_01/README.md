@@ -1,4 +1,5 @@
 # 사주고냥
+![채팅룸 페이지](./assets/media/meta_image.png)
 
 ## 1. 목표와 기능
 ### 1.1. 목표
@@ -86,21 +87,22 @@ gantt
 ## 5. 와이어프레임 / UI
 
 ### 5.1. 와이어프레임
-https://www.figma.com/file/ofWNGMj0v0mjAA2t96KEtZ/%EC%82%AC%EC%A3%BC%EA%B3%A0%EB%83%A5?type=design&node-id=0%3A1&mode=design&t=IJlP2xiSfTRX3v1R-1
+[Figma - 사주고냥 와이어 프레임](https://www.figma.com/file/ofWNGMj0v0mjAA2t96KEtZ/%EC%82%AC%EC%A3%BC%EA%B3%A0%EB%83%A5?type=design&node-id=0%3A1&mode=design&t=IJlP2xiSfTRX3v1R-1)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/dc2b340b-e493-463f-a989-d1a2666a0d9a/8d8bf166-53fa-464b-b263-ec5f27f471f0/Untitled.png)
+![와이어프레임](./assets/media/readme_wireframe.png)
 
 ### 5.2. 화면설계
+- 메인 페이지
 
-![메인 페이지](https://prod-files-secure.s3.us-west-2.amazonaws.com/dc2b340b-e493-463f-a989-d1a2666a0d9a/b6d0304a-bbb6-4e73-a710-bf97ba920896/0_%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB_%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.png)
+![메인 페이지](./assets/media/readme_welcome.png)
 
+- 채팅룸 페이지
 
-![채팅룸 페이지](https://prod-files-secure.s3.us-west-2.amazonaws.com/dc2b340b-e493-463f-a989-d1a2666a0d9a/2bd64759-afc8-4f28-b617-f2d59f1de162/1_%E1%84%8E%E1%85%A2%E1%84%90%E1%85%B5%E1%86%BC_%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.png)
-
+![채팅룸 페이지](./assets/media/readme_chatroom.png)
 
 	
 
-## 6. **Architecture**
+## 6.Architecture
 
 ```mermaid
 graph TD;
