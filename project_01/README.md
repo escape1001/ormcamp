@@ -43,13 +43,10 @@ sequenceDiagram
         Website->>User: 로딩 표시 해제 및 메시지 출력
     else 처리 실패
         API-->>Website: 에러 반환
-        Website->>User: 에러 메시지 표시하고 재시도 요청
+        Website->>User: 로딩 표시 해제 후 에러 메시지 표시하고 재시도 요청
     end
     opt 입력한 값에서 날짜를 확인할 수 없는 경우
-        Website->>User: 재시도 요청
-    end
-    opt api 받아온 값을 파싱할 수 없을 때
-        Website->>User: 재시도 요청
+        Website->>User: 로딩 표시 해제 후 안내 문구와 함께 재시도 요청
     end
 ```
 
@@ -112,8 +109,8 @@ A -->|Deploys to| C[GitHub Pages]
 1. 감정이 지정된 리스트 내에서 반환되지 않아 이모티콘 불러오기에 실패하는 경우
     - `<img>` 초기 스타일에 1px * 1px 크기 + `position:absolute;`를 적용해 사용자 눈엔 보이지 않지만 로딩할 수 있는 최소크기로 지정
     - `img.load-success` 에 UI 스타일 적용
-    - `<img>` 태그 로딩 시 해당 이미지가 `/assets/media` 폴더에 있는 경우 onLoad 이벤트 트리거됨
-    - onLoad 이벤트에 `showImg` 함수 바인딩
+    - `<img>` 태그 로딩 시 해당 이미지가 `/assets/media` 폴더에 있는 경우 load 이벤트 트리거됨
+    - load 이벤트에 `showImg` 함수 바인딩
     - `showImg`를 통해 해당 객체에 `.load-success` 클래스 추가
 2. 답변 형식이 요청한 양식대로 오지 않아 파싱에 실패하는 경우
     - 프롬포트에 예시텍스트 추가해 답변이 필요한 형식으로 오도록 유도
