@@ -1,3 +1,6 @@
+import requests
+from bs4 import BeautifulSoup
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -43,7 +46,6 @@ user_list = [
     },
 ]
 
-
 def index(request):
     return HttpResponse("index 페이지입니다.")
 
@@ -76,3 +78,20 @@ def userdetails(request, user):
         return HttpResponse(f"등록되지 않은 유저입니다.")
     
     return HttpResponse(f"userdetails : {user} 페이지입니다.")
+
+
+def bookinfo(request):
+    url = "https://paullab.co.kr/bookservice/"
+    response = requests.get(url)
+    html = response.text
+    soup = BeautifulSoup(html, "html.parser")
+    titles = soup.select("h2")
+    book_cover = soup.select(".book_cover")
+    book_list = []
+
+    for title, cover in zip(titles, book_cover) :
+        book_list.append({"title" : title.text, "cover":url+cover["src"]})
+
+    context = {"book_list" : book_list}
+
+    return render(request, "main/bookinfo.html", context)

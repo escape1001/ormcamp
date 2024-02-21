@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bookinfo</title>
+</head>
+<body>
+    <h1>Bookinfo</h1>
+    <ul>
+        {# 주석 이렇게 답니다. #}
+        {%for item in book_list%}
+        <li>
+            <h2>{{item.title}}</h2>
+            <img src="{{item.cover}}" width="100">
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>
