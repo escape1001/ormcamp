@@ -25,17 +25,8 @@
       <div class="col-lg-7 col-xl-7">
         <div class="product_slider_img">
           <div id="vertical">
-            <div data-thumb="{% static 'img/product/single-product/product_1.png' %}">
-              <img src="{% static 'img/product/single-product/product_1.png' %}" />
-            </div>
-            <div data-thumb="{% static 'img/product/single-product/product_1.png' %}">
-              <img src="{% static 'img/product/single-product/product_1.png' %}" />
-            </div>
-            <div data-thumb="{% static 'img/product/single-product/product_1.png' %}">
-              <img src="{% static 'img/product/single-product/product_1.png' %}" />
-            </div>
-            <div data-thumb="{% static 'img/product/single-product/product_1.png' %}">
-              <img src="{% static 'img/product/single-product/product_1.png' %}" />
+            <div data-thumb="{% static product.img_path %}">
+              <img src="{% static product.img_path %}" />
             </div>
           </div>
         </div>
@@ -43,8 +34,8 @@
       <div class="col-lg-5 col-xl-4">
         <div class="s_product_text">
           <h5>previous <span>|</span> next</h5>
-          <h3>Faded SkyBlu Denim Jeans</h3>
-          <h2>$149.99</h2>
+          <h3>{{product.name}}</h3>
+          <h2>₩{{product.price}}</h2>
           <ul class="list">
             <li>
               <a class="active" href="#">
