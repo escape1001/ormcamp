@@ -1,0 +1,7 @@
+<h1>blog_list 페이지</h1>
+검색기능 구현~~
+<ul>
+    {% for data in db %}
+    <li>{{data.title}} / {{data.contents}}</li>
+    {% endfor %}
+</ul>
