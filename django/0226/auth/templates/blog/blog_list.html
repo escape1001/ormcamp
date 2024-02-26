@@ -3,6 +3,7 @@
     <input name="q" placeholder="검색어 입력">
     <button>검색</button>
 </form>
+<a href="{% url "create" %}">글쓰기</a>
 <ul>
     {% for post in post_list %}
     <li>

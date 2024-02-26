@@ -1,7 +1,7 @@
 from django.db import models
 
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=10)
     contents = models.TextField()
     main_image = models.ImageField(upload_to="blog/%Y/%m/%d/", blank=True)
     '''
