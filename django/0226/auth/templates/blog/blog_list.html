@@ -1,0 +1,14 @@
+<h1>블로그 메인</h1>
+<form action="" method="get">
+    <input name="q" placeholder="검색어 입력">
+    <button>검색</button>
+</form>
+<ul>
+    {% for post in post_list %}
+    <li>
+        <a href="{% url "blog_details" post.id %}">
+            {{post.title}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

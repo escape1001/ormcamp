@@ -1,0 +1,10 @@
+<a href="{% url "blog_list" %}">뒤로가기</a>
+<h1>blog_details</h1>
+<h2>{{post.title}}</h2>
+{% if post.main_image %}
+<p>
+    <img src="{{post.main_image.url}}"/>
+</p>
+{% endif %}
+<p>{{post.contents}}</p>
+<p>{{post.created_at}}</p>
