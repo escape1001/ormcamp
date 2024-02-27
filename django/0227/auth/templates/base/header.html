@@ -1,0 +1,27 @@
+<header>
+    <h1>
+        <a href="/">Home</a>
+    </h1>
+    <ul>
+        <li>
+            <a href="{% url "blog_list" %}">
+                blog
+            </a>
+        </li>
+        <li>
+            <a href="{% url "signup" %}">
+                signup
+            </a>
+        </li>
+        <li>
+            <a href="{% url "login" %}">
+                login
+            </a>
+        </li>
+        <li>
+            <a href="{% url "logout" %}">
+                logout
+            </a>
+        </li>
+    </ul>
+</header>
