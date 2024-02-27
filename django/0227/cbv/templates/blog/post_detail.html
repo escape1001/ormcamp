@@ -1,0 +1,23 @@
+<h1>post_detail</h1>
+<p>object.title : {{ object.title }}</p>
+<p>object.contents : {{ object.contents }}</p>
+<p>object.created_at : {{ object.created_at }}</p>
+<p>object.updated_at : {{ object.updated_at }}</p>
+<p>object.head_image : {{ object.head_image }}</p>
+<p>object.file_upload : {{ object.file_upload }}</p>
+
+{% if object.head_image %}
+<img width="800" src="{{object.head_image.url}}">
+{% endif %}
+
+<form action="{% url "blog_edit" object.pk %}" method="POST">
+    {% csrf_token %}
+    <button>수정하기</button>
+</form>
+
+<form action="{% url "blog_delete" object.pk %}" method="POST">
+    {% csrf_token %}
+    <button>삭제하기</button>
+</form>
+
+<a href="{% url "blog_list" %}">리스트로 돌아가기</a>

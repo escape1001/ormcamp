@@ -14,3 +14,5 @@ django/0223/db_search/venv/
 django/0226/auth/venv/
 django/0227/auth/venv/
 django/*/*/venv
+*.jpeg
+*.png
