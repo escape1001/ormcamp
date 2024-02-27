@@ -19,9 +19,15 @@
             </a>
         </li>
         <li>
-            <a href="{% url "logout" %}">
-                logout
+            <a href="{% url "profile" %}">
+                profile
             </a>
+        </li>
+        <li>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">로그아웃</button>
+            </form>            
         </li>
     </ul>
 </header>
