@@ -6,6 +6,9 @@
         {% if request.user.is_authenticated %}
         <li>안녕하세요 {{user.username}}님!</li>
         <li>
+            <a href="{% url "profile" %}">내 프로필</a>
+        </li>
+        <li>
             <a href="{% url "tube_create" %}">글쓰기</a>
         </li>
         <li>

@@ -7,5 +7,5 @@ urlpatterns = [
     path('create/', views.tube_create, name="tube_create"),
     path('update/<int:pk>/', views.tube_update, name="tube_update"),
     path('delete/<int:pk>/', views.tube_delete, name="tube_delete"),
-    # path('tag/<str:tag>/', views.tube_tag_list, name="tube_tag_list"),
+    path('tag/<str:tag>/', views.tube_tag_list, name="tube_tag_list"),
 ]

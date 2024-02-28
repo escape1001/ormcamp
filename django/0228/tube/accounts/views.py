@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.views.generic import CreateView
+from tube.models import Video, Comment, Like
 
 
 signup = CreateView.as_view(
@@ -22,4 +23,9 @@ logout = LogoutView.as_view(
 
 @login_required # 로그인 된 경우에만 접근 가능
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    videos = Video.objects.filter(author=request.user)
+    comments = Comment.objects.filter(author=request.user)
+    # likes = Like.objects.filter(author=request.user)
+
+    context = {"videos":videos, "comments":comments}
+    return render(request, 'accounts/accounts_profile.html', context)

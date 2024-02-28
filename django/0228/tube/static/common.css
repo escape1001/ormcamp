@@ -49,7 +49,6 @@ h2{
 
 .video-list{
     display:flex;
-    justify-content:space-between;
     flex-wrap:wrap;
     gap:10px;
 }
@@ -68,6 +67,22 @@ h2{
 
 .search-form input{
     flex-grow: 1;
+}
+
+.tag-area{
+    padding-bottom: 30px;
+}
+
+.tag-area ul{
+    padding-top: 10px;
+    display: flex;
+    gap:10px;
+}
+
+.tag-area li a{
+    padding:5px;
+    background: #ccc;
+    border-radius: 2px;
 }
 
 .video-list li{

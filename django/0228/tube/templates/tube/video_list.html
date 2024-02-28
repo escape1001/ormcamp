@@ -1,10 +1,23 @@
 {% extends "base/base.html" %}
 {% block contents %}
 <h2>tube_list</h2>
+{% if tags %}
 <form class="search-form" action="{% url "tube_list" %}">
     <input name="q" placeholder="검색어를 입력해주세요.">
     <button>검색</button>
 </form>
+<div class="tag-area">
+    <p>태그별로 모아보기</p>
+    <ul>
+        {% for tag in tags %}
+        <li>
+            <a href="{% url "tube_tag_list" tag.name %}">{{tag.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+{% endif %}
 <ul class="video-list">
     {% for video in object_list %}
     <li>

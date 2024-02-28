@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+{% block contents %}
+<h2>accounts_profile</h2>
+<p>username : {{user.username}}</p>
+<h3>내가 올린 비디오</h3>
+<ul class="video-list">
+    {% for video in videos %}
+    <li>
+        <a href="{% url "tube_detail" video.pk %}">
+            <img src="{{video.thumbnail_image.url}}">
+            {{video.title}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>내가 쓴 덧글</h3>
+<ul>
+    {% for comment in comments %}
+    <li>
+        <a href="{% url "tube_detail" comment.video.pk %}">
+            {{comment.contents}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

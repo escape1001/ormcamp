@@ -31,10 +31,22 @@
     {% endif %}
     <div>
         <p>덧글</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>덧글 등록</button>
+        </form>
+
         {% if object.comments.all %}
         <ul>
             {% for comment in object.comments.all %}
-            <li>{{comment.contents}} / {{comment.author}}</li>
+            <li>
+                {{comment.contents}} / {{comment.author}}
+                <form action="{% url 'tube_detail' object.pk %}/delete_comment/{{ comment.pk }}/" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete Comment</button>
+                </form>
+            </li>
             {% endfor %}
         </ul>
         {% else %}
