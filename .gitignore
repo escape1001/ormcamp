@@ -16,3 +16,4 @@ django/0227/auth/venv/
 django/*/*/venv
 *.jpeg
 *.png
+django/venv
