@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloneTube</title>
+    <link rel="stylesheet" href="{% static 'common.css' %}">
+</head>
+<body>
+    {% include "base/header.html" %}
+
+    <main>
+        {% block contents %}
+        {% endblock %}
+    </main>
+
+    {% include "base/footer.html" %}
+</body>
+</html>

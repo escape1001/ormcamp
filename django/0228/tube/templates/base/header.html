@@ -1,0 +1,26 @@
+<header>
+    <h1>
+        <a href="{% url "tube_list" %}">Home</a>
+    </h1>
+    <ul>
+        {% if request.user.is_authenticated %}
+        <li>안녕하세요 {{user.username}}님!</li>
+        <li>
+            <a href="{% url "tube_create" %}">글쓰기</a>
+        </li>
+        <li>
+            <form action="{% url "logout" %}" method="POST">
+                {% csrf_token %}
+                <button>로그아웃</button>
+            </form>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url "signup" %}">회원가입</a>
+        </li>
+        <li>
+            <a href="{% url "login" %}">로그인</a>
+        </li>
+        {% endif %}
+    </ul>
+</header>

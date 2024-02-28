@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+{% block contents %}
+<h2>tube_list</h2>
+<form class="search-form" action="{% url "tube_list" %}">
+    <input name="q" placeholder="검색어를 입력해주세요.">
+    <button>검색</button>
+</form>
+<ul class="video-list">
+    {% for video in object_list %}
+    <li>
+        <a href="{% url "tube_detail" video.pk %}">
+            <img src="{{video.thumbnail_image.url}}">
+            <p class="title">{{video.title}}</p>
+            <p>
+                작성자 : {{video.author}} /
+                덧글 : {{video.comments.all.count}} /
+                좋아요 : {{video.likes.count}}
+            </p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

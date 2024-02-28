@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+{% block contents %}
+<h2>tube_detail</h2>
+<div class="video-detail">
+    <video controls playsinline poster="{{object.thumbnail_image.url}}">
+        <source src="{{object.video_upload.url}}" type="video/mp4">
+    </video>
+    <div class="info-top">
+        <h3 class="title">{{object.title}}</h3>
+        {% if user.username == object.author.username %}
+        <div>
+            <a href="{% url "tube_update" object.pk %}">수정하기</a>
+            <form action="{% url "tube_delete" object.pk %}" method="POST">
+                {% csrf_token %}
+                <button>삭제하기</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    <p>작성자 : {{object.author}} / 좋아요 : {{object.likes.count}}</p>
+    <p>설명글 : {{object.contents}}</p>
+    
+    {% if object.tags.all %}
+    <p>
+        태그 :
+        {% for tag in object.tags.all %}
+        <i>{{tag.name}}</i>
+        {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    {% endif %}
+    <div>
+        <p>덧글</p>
+        {% if object.comments.all %}
+        <ul>
+            {% for comment in object.comments.all %}
+            <li>{{comment.contents}} / {{comment.author}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>아직 덧글이 없습니다.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
