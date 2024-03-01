@@ -1,13 +1,11 @@
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
-from .models import Video, Comment, Like, Tag
+from .models import Video, Comment, Tag
 from django.urls import reverse_lazy, reverse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import CommentForm
-from django.shortcuts import get_object_or_404
-
 
 
 class TubeList(ListView):
@@ -37,7 +35,7 @@ class TubeDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comment_form'] = CommentForm()
+        context['form'] = CommentForm()
         return context
 
     def post(self, request, *args, **kwargs):

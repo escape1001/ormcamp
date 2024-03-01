@@ -18,3 +18,5 @@ django/*/*/venv
 *.png
 django/venv
 *.mp4
+*.webp
+*.jpg
