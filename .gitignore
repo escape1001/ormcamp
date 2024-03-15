@@ -20,3 +20,4 @@ django/venv
 *.mp4
 *.webp
 *.jpg
+flask/venv
