@@ -1,17 +1,34 @@
 # app.py
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
-# Flask 인스턴스
+
 app = Flask(__name__)
 
 
-@app.route("/")  # URL
+@app.route("/")
 def index():
-    return render_template(
-        "index.html", title="Flask", message="Hello Flask!", data=[1, 2, 3, 4, 5]
-    )
+    return render_template("index.html")
+
+
+@app.route("/test", methods=("GET", "POST"))
+def test():
+    if request.method == "POST":
+        # args 보기
+        print(request.args)
+        # form 보기
+        print(request.form)
+        # name 필드 보기
+        print(request.form.get("name"))
+        return "POST request"
+    else:
+        # args 보기
+        print(request.args)
+        # form 보기
+        print(request.form)
+        # name 필드 보기
+        print(request.args.get("name"))
+        return "GET request"
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-    # host 직접 지정 app.run(host="127.0.0.1", port="8000", debug=True)

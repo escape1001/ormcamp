@@ -13,5 +13,15 @@
             <li>{{d}}</li>
         {% endfor %}
     </ul>
+    <form action="/test" method="get">
+        <p>get</p>
+        name: <input type="text" name="name">
+        <input type="submit" value="전송">
+    </form>
+    <form action="/test" method="post">
+        <p>post</p>
+        name: <input type="text" name="name">
+        <input type="submit" value="전송">
+    </form>
 </body>
 </html>
