@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # django lib app
+    # third party apss
     "rest_framework",
     "corsheaders",
-    # custom app
+    # my apps
+    "notice",
     "blog",
 ]
 
