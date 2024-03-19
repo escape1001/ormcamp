@@ -22,3 +22,6 @@ def post_list(request):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+    
+def post_detail(request, pk):
+    pass
