@@ -8,9 +8,8 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter
 
 
 @extend_schema(
-        summary="요약줄",
-        description="""설명란<br/>
-            html 태그를 사용할 수도 있습니다. """,
+        summary='블로그목록',
+        description="비회원 - / 회원 RC / 작성자 -",
     )
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -29,6 +28,34 @@ def post_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
             
-    
+@extend_schema(
+        summary='블로그상세',
+        description="비회원 - / 회원 R / 작성자 RUD",
+    )
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated, IsAuthenticatedOrReadOnly])    
 def post_detail(request, pk):
-    pass
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        if request.user != post.author :
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        
+        serializer = PostSerializer(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'DELETE':
+        if request.user != post.author :
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
