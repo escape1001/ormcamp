@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party apss
+    'drf_spectacular',
     "corsheaders",
     "rest_framework",
     'rest_framework.authtoken',
@@ -69,6 +70,21 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+# swagger 붙이기
+REST_FRAMEWORK = {
+    # YOUR SETTINGS  drf의 schema 클래스를 drf-specacular의 AutoSchema로 교체해줍니다.
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': '스웨거 테스트',
+    'DESCRIPTION': '설명글~~',
+    'VERSION': '1.0.0',
+}
+
 # dj-rest-auth (필요시에만 표기)
 REST_USE_JWT = True # JWT 사용 여부
 JWT_AUTH_COOKIE = 'my-app-auth' # 호출할 Cookie Key 값
@@ -86,12 +102,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none' # email 인증 필수 여부
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # AccessToken 유효 기간 설정. 5분으로 설정하고 만료-재발행 확인 후 60분으로 바꿀 것
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),  # RefreshToken 유효 기간 설정
-}
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
 }
 
 ROOT_URLCONF = 'tutorial.urls'
