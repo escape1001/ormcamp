@@ -32,7 +32,7 @@ def notice_list(request):
             serializer.save(author=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errorss, status=status.HTTP_400_BAD_REQUEST)
         
 
 @extend_schema(
@@ -63,7 +63,7 @@ def notice_detail(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
     elif request.method == 'DELETE':
         if not request.user.is_authenticated or request.user != notice.author :

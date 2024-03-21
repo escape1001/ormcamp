@@ -5,11 +5,17 @@ from rest_framework import status
 from .models import Post
 from .serializers import PostSerializer
 from drf_spectacular.utils import extend_schema, OpenApiParameter
+from drf_spectacular.types import OpenApiTypes
 
 
 @extend_schema(
         summary='블로그목록',
         description="비회원 - / 회원 RC / 작성자 -",
+        request=PostSerializer,  # request body의 스키마 지정
+        parameters=[
+            OpenApiParameter(name='title', type=OpenApiTypes.STR, location=OpenApiParameter.QUERY),
+            OpenApiParameter(name='content', type=OpenApiTypes.STR, location=OpenApiParameter.QUERY)
+        ],
     )
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -25,12 +31,17 @@ def post_list(request):
             serializer.save(author=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errorss, status=status.HTTP_400_BAD_REQUEST)
 
             
 @extend_schema(
         summary='블로그상세',
         description="비회원 - / 회원 R / 작성자 RUD",
+        request=PostSerializer,  # request body의 스키마 지정
+        parameters=[
+            OpenApiParameter(name='title', type=OpenApiTypes.STR, location=OpenApiParameter.QUERY),
+            OpenApiParameter(name='content', type=OpenApiTypes.STR, location=OpenApiParameter.QUERY)
+        ],
     )
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated, IsAuthenticatedOrReadOnly])    
@@ -52,7 +63,7 @@ def post_detail(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
     elif request.method == 'DELETE':
         if request.user != post.author :
